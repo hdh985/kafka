@@ -38,6 +38,14 @@ public class SimpleProducer {
         producer.send(record2);
         logger.info("{}", record2);
         producer.flush();
+
+        int partitionNo = 0;
+
+        ProducerRecord<String, String> record3 = new ProducerRecord<>(TOPIC_NAME, partitionNo, "kakao", "kakao");
+
+        producer.send(record3);
+
+        producer.flush();
         producer.close();
     }
 
