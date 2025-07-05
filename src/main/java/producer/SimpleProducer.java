@@ -32,7 +32,14 @@ public class SimpleProducer {
         producer.send(record);
         logger.info("{}", record);
         producer.flush();
+
+        String messageValue2 = "testMessage2";
+        ProducerRecord<String, String> record2 = new ProducerRecord<>(TOPIC_NAME, messageValue2);
+        producer.send(record2);
+        logger.info("{}", record2);
+        producer.flush();
         producer.close();
+
     }
 
 }
