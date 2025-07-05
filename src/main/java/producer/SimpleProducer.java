@@ -1,6 +1,7 @@
 package producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -33,13 +34,11 @@ public class SimpleProducer {
         logger.info("{}", record);
         producer.flush();
 
-        String messageValue2 = "testMessage2";
-        ProducerRecord<String, String> record2 = new ProducerRecord<>(TOPIC_NAME, messageValue2);
+        ProducerRecord<String, String> record2 = new ProducerRecord<>(TOPIC_NAME, "kakao", "kakao");
         producer.send(record2);
         logger.info("{}", record2);
         producer.flush();
         producer.close();
-
     }
 
 }
